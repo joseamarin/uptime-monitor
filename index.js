@@ -11,7 +11,9 @@ const fs = require('fs');
 const StringDecoder = require('string_decoder').StringDecoder;
 
 // Local requires
-const config = require('./config');
+const config = require('./lib/config');
+const handlers = require('./lib/handlers');
+const helpers = require('./lib/helpers');
 
 // HTTP server
 const httpServer = http.createServer((req, res) => {
@@ -77,13 +79,13 @@ const unifiedServer = (req, res) => {
       queryStringObj,
       method,
       headers,
-      'payload': buffer
+      'payload': helpers.parseJsonToObj(buffer)
     };
 
     // Route the request to the handler specified in the router
     chosenHandler(data, (err, status, payload) => {
       if (err) {
-        throw err;
+        console.error(err);
       }
       status = typeof (status) === 'number' ? status : 200;
 
@@ -110,20 +112,8 @@ const unifiedServer = (req, res) => {
   });
 };
 
-// Handlers
-const handlers = {};
-
-// test handler
-handlers.test = (data, cb) => {
-  // Callback a HTTP status code and payload object
-  cb(null, 406, { 'callback_name': 'test route handler' });
-};
-
-handlers.notFound = (data, cb) => {
-  cb(null, 404);
-};
-
 // Request router
 const router = {
-  'test': handlers.test
+  'ping': handlers.ping,
+  'users': handlers.users
 };

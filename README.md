@@ -1,10 +1,10 @@
 An "uptime monitor" allows users to enter URLs they want monitored,
 and receive alerts when those resources "go down" or "come back up".
 
-1. the app should be usable, so we'll include features such as
+1. The app should be usable, so it should include features such as
 user sign-up and sign-in.
 
-2. We'll also include functionality for sending an SMS alert
+2. The app should include functionality for sending an SMS alert
 to a user, rather than email.
 
 **Backend spec requirements**
