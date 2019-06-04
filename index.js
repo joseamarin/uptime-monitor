@@ -1,8 +1,3 @@
-/*
- * Primary file for the API
- *
- */
-
 // Built in node core requires
 const http = require('http');
 const https = require('https');

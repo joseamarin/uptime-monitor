@@ -31,4 +31,4 @@ from "up" to "down", or vise versa.
 - The alerts will be sent via SMS, using Twilio
 
 - Since this project is not using any frameworks or packages the database will
-just be a writing files to the disk and storing json
+just be writing files to the disk by storing json
